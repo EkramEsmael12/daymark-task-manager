@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="description" content="A focused, thoughtful workspace for planning your day.">
+  <title>Daymark — Your day, in focus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Daymark home"><span class="brand-mark">d</span><span>daymark</span></a>
+      <div class="workspace-label">WORKSPACE</div>
+
+      <nav class="nav" aria-label="Task views">
+        <button class="nav-item active" data-filter="all"><span class="nav-icon">▦</span><span>All tasks</span><span class="nav-count" id="count-all">0</span></button>
+        <button class="nav-item" data-filter="today"><span class="nav-icon">◷</span><span>Today</span><span class="nav-count" id="count-today">0</span></button>
+        <button class="nav-item" data-filter="upcoming"><span class="nav-icon">▤</span><span>Upcoming</span><span class="nav-count" id="count-upcoming">0</span></button>
+        <button class="nav-item" data-filter="done"><span class="nav-icon">✓</span><span>Completed</span><span class="nav-count" id="count-done">0</span></button>
+      </nav>
+
+      <div class="side-divider"></div>
+      <div class="workspace-label">YOUR FOCUS</div>
+
+      <div class="focus-card">
+        <div class="focus-top"><span class="focus-icon">✳</span><span class="focus-title">Daily progress</span></div>
+        <div class="focus-numbers"><strong id="focus-percent">0%</strong><span id="focus-caption">0 of 0 tasks</span></div>
+        <div class="progress-track"><div id="progress-bar"></div></div>
+        <p id="focus-message">A good day starts with one thing.</p>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="avatar">D</div>
+        <div class="profile"><strong>Your workspace</strong><span>Personal plan</span></div>
+        <span class="more">···</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-top">
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-view">All tasks</strong></div>
+        <div class="top-date"><span class="live-dot"></span><span id="today-short"></span></div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow" id="heading-date"></p>
+          <h1 id="view-title">All tasks<span class="title-period">.</span></h1>
+          <p class="heading-sub" id="heading-sub">A clear plan makes space for good work.</p>
+        </div>
+        <div class="heading-mark" aria-hidden="true">✳</div>
+      </section>
+
+      <section class="task-panel" aria-label="Your tasks">
+        <form id="task-form" class="composer">
+          <div class="composer-main">
+            <span class="plus-mark" aria-hidden="true">＋</span>
+            <label class="sr-only" for="task-input">Task name</label>
+            <input id="task-input" maxlength="120" placeholder="Add a task to your day..." required autocomplete="off">
+            <button class="add-button" type="submit">Add task <span>↗</span></button>
+          </div>
+          <div class="composer-options">
+            <label class="option-control">
+              <span class="option-symbol">⚑</span>
+              <select id="priority" aria-label="Task priority">
+                <option value="normal">Priority: Normal</option>
+                <option value="high">Priority: High</option>
+                <option value="low">Priority: Low</option>
+              </select>
+            </label>
+            <label class="option-control">
+              <span class="option-symbol">◷</span>
+              <input id="due-date" type="date" aria-label="Due date">
+            </label>
+          </div>
+        </form>
+
+        <div class="list-toolbar">
+          <div class="toolbar-left"><span class="list-label">TASK LIST</span><span class="list-total" id="visible-count">0</span></div>
+          <div class="toolbar-actions">
+            <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search tasks" aria-label="Search tasks"></label>
+            <button id="sort-button" class="sort-button" type="button" aria-label="Sort tasks by priority">↕ <span>Priority</span></button>
+          </div>
+        </div>
+
+        <div id="task-list" class="task-list" aria-live="polite"></div>
+
+        <div id="empty" class="empty-state">
+          <div class="empty-illustration"><span>✓</span><i>✳</i></div>
+          <strong id="empty-title">Nothing on your list yet</strong>
+          <p id="empty-copy">Add your first task above. You’ve got this.</p>
+          <button id="empty-add" type="button">＋ Create a task</button>
+        </div>
+
+        <footer class="list-footer">
+          <span id="footer-count">0 tasks</span>
+          <button id="clear-done" type="button">Clear completed</button>
+        </footer>
+      </section>
+
+      <p class="privacy-note"><span>◈</span> Your work is saved privately on this device.</p>
+    </main>
+  </div>
+</body>
+</html>
